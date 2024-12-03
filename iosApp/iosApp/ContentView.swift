@@ -3,8 +3,8 @@ import Shared
 
 struct ContentView: View {
     @State private var title: String = ""
-    @State private var priority: String = "Select Priority"
-    @State private var category: String = "Select Category"
+    @State private var priority: String = "Seleccionar Prioridad"
+    @State private var category: String = "Seleccionar Categoría"
     @State private var description: String = ""
     @State private var dueDate = Date()
     @State private var isDatePickerVisible: Bool = false
@@ -13,14 +13,14 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                TextField("Title", text: $title)
+                TextField("Titulo", text: $title)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
                 
                 Menu {
-                    Button("High") { priority = "High" }
-                    Button("Medium") { priority = "Medium" }
-                    Button("Low") { priority = "Low" }
+                    Button("Alta") { priority = "Alta" }
+                    Button("Media") { priority = "Media" }
+                    Button("Baja") { priority = "Baja" }
                 } label: {
                     HStack {
                         Text(priority)
@@ -33,9 +33,9 @@ struct ContentView: View {
                 }
                 
                 Menu {
-                    Button("Work") { category = "Work" }
+                    Button("Trabajo") { category = "Trabajo" }
                     Button("Personal") { category = "Personal" }
-                    Button("Other") { category = "Other" }
+                    Button("Otra") { category = "Otra" }
                 } label: {
                     HStack {
                         Text(category)
@@ -47,7 +47,7 @@ struct ContentView: View {
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
                 }
                 
-                TextField("Description", text: $description)
+                TextField("Descripción", text: $description)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
                 
@@ -55,7 +55,7 @@ struct ContentView: View {
                     isDatePickerVisible.toggle()
                 }) {
                     HStack {
-                        Text("Due date: \(dueDate, formatter: DateFormatter.shortDateFormatter)")
+                        Text("Fecha de vencimiento: \(dueDate, formatter: DateFormatter.shortDateFormatter)")
                         Spacer()
                         Image(systemName: "calendar")
                             .foregroundColor(.blue)
@@ -65,11 +65,11 @@ struct ContentView: View {
                 }
                 .sheet(isPresented: $isDatePickerVisible) {
                     VStack {
-                        DatePicker("Select Due Date", selection: $dueDate, displayedComponents: .date)
+                        DatePicker("Seleccionar fecha", selection: $dueDate, displayedComponents: .date)
                             .datePickerStyle(WheelDatePickerStyle())
                             .labelsHidden()
                         
-                        Button("Done") {
+                        Button("Listo") {
                             isDatePickerVisible = false
                         }
                         .padding()
@@ -84,9 +84,9 @@ struct ContentView: View {
                 
                 Toggle(isOn: $notificationsEnabled) {
                     VStack(alignment: .leading) {
-                        Text("Notifications")
+                        Text("Notificaciones")
                             .foregroundColor(.white)
-                        Text("Receive notifications when the task is due")
+                        Text("Recibir notificaciones cuando la tarea esté vencida")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
@@ -98,7 +98,7 @@ struct ContentView: View {
                 Button(action: {
                     // Action to create the task
                 }) {
-                    Text("Create task")
+                    Text("Crear tarea")
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)

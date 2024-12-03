@@ -13,7 +13,7 @@ fun DropdownPriority(
     onPrioritySelected: (String) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
-    val options = listOf("High", "Medium", "Low")
+    val options = listOf("Alta", "Media", "Baja")
 
     ExposedDropdownMenuBox(
         expanded = expanded,
@@ -23,7 +23,7 @@ fun DropdownPriority(
             value = selectedPriority,
             onValueChange = {},
             readOnly = true,
-            label = { Text("Select Priority") },
+            label = { Text("Seleccionar Prioridad") },
             trailingIcon = {
                 ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
             },

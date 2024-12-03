@@ -12,7 +12,7 @@ fun DropdownCategory(
     onCategorySelected: (String) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
-    val options = listOf("Work", "Personal", "Other")
+    val options = listOf("Trabajo", "Personal", "Otra")
 
     ExposedDropdownMenuBox(
         expanded = expanded,
@@ -22,7 +22,7 @@ fun DropdownCategory(
             value = selectedCategory,
             onValueChange = {},
             readOnly = true,
-            label = { Text("Select Category") },
+            label = { Text("Seleccionar Categoría") },
             trailingIcon = {
                 ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
             },

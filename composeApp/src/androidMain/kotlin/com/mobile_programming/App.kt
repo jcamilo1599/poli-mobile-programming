@@ -19,8 +19,8 @@ fun App() {
     var dueDate by remember { mutableStateOf("") }
     var isDatePickerVisible by remember { mutableStateOf(false) }
     var notificationsEnabled by remember { mutableStateOf(true) }
-    var selectedPriority by remember { mutableStateOf("Select Priority") }
-    var selectedCategory by remember { mutableStateOf("Select Category") }
+    var selectedPriority by remember { mutableStateOf("Seleccionar Prioridad") }
+    var selectedCategory by remember { mutableStateOf("Seleccionar Categoría") }
     val context = LocalContext.current
     val calendar = Calendar.getInstance()
 
@@ -46,7 +46,7 @@ fun App() {
         OutlinedTextField(
             value = title,
             onValueChange = { title = it },
-            label = { Text("Title") },
+            label = { Text("Titulo") },
             modifier = Modifier.fillMaxWidth(),
         )
 
@@ -66,7 +66,7 @@ fun App() {
         OutlinedTextField(
             value = description,
             onValueChange = { description = it },
-            label = { Text("Description") },
+            label = { Text("Descripción") },
             modifier = Modifier.fillMaxWidth(),
         )
 
@@ -76,7 +76,7 @@ fun App() {
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text(text = "Due date: ${if (dueDate.isEmpty()) "Select Date" else dueDate}")
+            Text(text = "Fecha de vencimiento: ${dueDate.ifEmpty { "Seleccionar fecha" }}")
         }
 
         // Mostrar el DatePickerDialog si es necesario
@@ -90,7 +90,7 @@ fun App() {
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Receive notifications when the task is due")
+            Text("Recibir notificaciones cuando la tarea esté vencida")
             Spacer(modifier = Modifier.weight(1f))
             Switch(
                 checked = notificationsEnabled,
@@ -104,7 +104,7 @@ fun App() {
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Create task")
+            Text("Crear tarea")
         }
     }
 }
